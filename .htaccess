@@ -1,0 +1,16 @@
+RewriteEngine On
+RewriteBase /sentiment%20analysis/
+
+# Handle API requests
+RewriteRule ^api/sentiment/analysis$ api/sentiment/analysis.php [L,QSA]
+
+# Handle frontend requests
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [QSA,L]
+
+# PHP settings
+php_value upload_max_filesize 10M
+php_value post_max_size 10M
+php_value max_execution_time 300
+php_value max_input_time 300
