@@ -6,10 +6,8 @@ class Config {
     
     public static function load() {
         $configFiles = [
-            'app' => __DIR__ . '/app.php',
-            'database' => __DIR__ . '/database.php',
-            'redis' => __DIR__ . '/redis.php',
-            'sentiment' => __DIR__ . '/sentiment.php'
+            'app' => __DIR__ . '/../config/app.php',
+            'sentiment' => __DIR__ . '/../config/sentiment.php'
         ];
         
         foreach ($configFiles as $key => $file) {

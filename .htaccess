@@ -2,7 +2,7 @@ RewriteEngine On
 RewriteBase /sentiment%20analysis/
 
 # Handle API requests
-RewriteRule ^api/sentiment/analysis$ api/sentiment/analysis.php [L,QSA]
+RewriteRule ^api/sentiment_analysis$ api/sentiment_analysis.php [L,QSA]
 
 # Handle frontend requests
 RewriteCond %{REQUEST_FILENAME} !-f

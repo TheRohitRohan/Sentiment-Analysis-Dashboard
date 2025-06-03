@@ -4,12 +4,10 @@ namespace App\Services;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Exception;
-use App\Logger;
 
 class NewsAPI {
     private $client;
     private $baseUrl;
-    private $logger;
 
     public function __construct() {
         $this->baseUrl = "https://newstimes.share.zrok.io";
@@ -21,7 +19,6 @@ class NewsAPI {
                 'Content-Type' => 'application/json'
             ]
         ]);
-        $this->logger = new Logger();
     }
 
     /**
@@ -38,12 +35,8 @@ class NewsAPI {
             }
             throw new Exception("API returned status code: " . $response->getStatusCode());
         } catch (GuzzleException $e) {
-            $this->logger->logError("API Error: " . $e->getMessage());
-            echo "GuzzleException: " . $e->getMessage();
             throw new Exception("Failed to fetch news: " . $e->getMessage());
         } catch (Exception $e) {
-            $this->logger->logError("General Error: " . $e->getMessage());
-            echo "Exception: " . $e->getMessage();
             throw $e;
         }
     }
@@ -116,7 +109,6 @@ class NewsAPI {
             
             return null;
         } catch (GuzzleException $e) {
-            $this->logger->logError("Error fetching article: " . $e->getMessage());
             throw new Exception("Failed to fetch article: " . $e->getMessage());
         }
     }
@@ -141,7 +133,6 @@ class NewsAPI {
             
             return $results;
         } catch (GuzzleException $e) {
-            $this->logger->logError("Error searching articles: " . $e->getMessage());
             throw new Exception("Failed to search articles: " . $e->getMessage());
         }
     }
@@ -166,27 +157,7 @@ class NewsAPI {
             
             return $results;
         } catch (GuzzleException $e) {
-            $this->logger->logError("Error fetching category articles: " . $e->getMessage());
             throw new Exception("Failed to fetch category articles: " . $e->getMessage());
         }
-    }
-
-    /**
-     * Cache the API response
-     * @param array $data
-     * @return void
-     */
-    public function cacheResponse($data) {
-        // Implement caching logic
-        // You can use Redis, Memcached, or file-based caching
-    }
-
-    /**
-     * Get cached response if available
-     * @return array|null
-     */
-    public function getCachedResponse() {
-        // Implement cache retrieval logic
-        return null;
     }
 }

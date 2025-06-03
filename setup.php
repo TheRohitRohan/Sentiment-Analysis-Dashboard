@@ -1,10 +1,7 @@
 <?php
 // Create necessary directories
 $directories = [
-    'logs',
-    'cache',
     'config',
-    'database',
     'classes'
 ];
 
@@ -26,9 +23,5 @@ EOT;
 
 file_put_contents('.htaccess', $htaccess);
 echo "Created .htaccess file\n";
-
-// Create logs directory with proper permissions
-chmod('logs', 0777);
-echo "Set permissions for logs directory\n";
 
 echo "Setup completed successfully!\n";

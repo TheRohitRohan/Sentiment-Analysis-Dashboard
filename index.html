@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Sentiment Analysis Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>📊 News Sentiment Analysis Dashboard</h1>
+            <div class="header-actions">
+                <button id="refreshBtn" class="btn">
+                    <span class="icon">🔄</span> Refresh
+                </button>
+                <button id="themeToggle" class="btn">
+                    <span class="icon">🌙</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Summary Cards -->
+        <div class="summary-cards">
+            <div class="card">
+                <h3>Total Articles</h3>
+                <p class="number" id="totalArticles">0</p>
+            </div>
+            <div class="card">
+                <h3>Average Sentiment</h3>
+                <p class="number" id="averageSentiment">0.00</p>
+            </div>
+            <div class="card">
+                <h3>Last Updated</h3>
+                <p class="number" id="lastUpdated">-</p>
+            </div>
+        </div>
+
+        <!-- Sentiment Count Boxes -->
+        <div class="sentiment-counts">
+            <div class="card sentiment-card positive">
+                <h3>Positive</h3>
+                <p class="number" id="positiveCount">0</p>
+            </div>
+            <div class="card sentiment-card neutral">
+                <h3>Neutral</h3>
+                <p class="number" id="neutralCount">0</p>
+            </div>
+            <div class="card sentiment-card negative">
+                <h3>Negative</h3>
+                <p class="number" id="negativeCount">0</p>
+            </div>
+        </div>
+
+        <!-- Charts -->
+        <div class="charts">
+            <div class="card chart-card">
+                <h3>Sentiment Distribution</h3>
+                <div class="chart-container">
+                    <canvas id="sentimentChart"></canvas>
+                </div>
+            </div>
+            <div class="card chart-card">
+                <h3>Sentiment Over Time</h3>
+                <div class="chart-container">
+                    <canvas id="timeSeriesChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Top Headlines Section -->
+        <div class="top-headlines">
+            <div class="card top-headlines-card">
+                <h3>Top 5 Positive Headlines</h3>
+                <ul id="topPositiveList" class="headline-list">
+                    <!-- Positive headlines will be populated by JavaScript -->
+                </ul>
+            </div>
+            <div class="card top-headlines-card">
+                <h3>Top 5 Negative Headlines</h3>
+                <ul id="topNegativeList" class="headline-list">
+                    <!-- Negative headlines will be populated by JavaScript -->
+                </ul>
+            </div>
+        </div>
+
+        <!-- Article List -->
+        <div class="card article-list-card">
+            <div class="article-list-header">
+                <h3>Article Analysis</h3>
+                <div class="article-list-actions">
+                    <input type="text" id="searchInput" placeholder="Search articles..." class="search-input">
+                    <select id="sentimentFilter" class="filter-select">
+                        <option value="all">All Sentiments</option>
+                        <option value="positive">Positive</option>
+                        <option value="neutral">Neutral</option>
+                        <option value="negative">Negative</option>
+                    </select>
+                </div>
+            </div>
+            <div class="table-container">
+                <table id="articleTable">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Sentiment</th>
+                            <th>Score</th>
+                            <th>Confidence</th>
+                            <th>Analyzed At</th>
+                        </tr>
+                    </thead>
+                    <tbody id="articleTableBody">
+                        <!-- Table content will be populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Latest Analyzed Article -->
+        <div class="card latest-article-card">
+            <h3>Latest Analyzed Article</h3>
+            <div id="latestArticleContent">
+                <!-- Latest article details will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
+
